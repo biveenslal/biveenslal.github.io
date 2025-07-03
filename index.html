@@ -6,12 +6,14 @@
     <title>Biveen Shajilal - Quantum Scientist</title>
     <style>
         :root {
-            --bg-dark: #0b1120;
-            --bg-panel: #1e293b;
-            --bg-hover: #334155;
-            --text-light: #e2e8f0;
-            --accent: #6366f1;
-            --accent-soft: #818cf8;
+            --bg-dark: #1f1f2e;
+            --bg-panel: #2e2e42;
+            --bg-hover: #3e3e58;
+            --text-light: #f4f4f8;
+            --accent: #a5b4fc; /* pastel indigo */
+            --accent-soft: #c4b5fd; /* softer pastel */
+            --accent-bg: #e0e7ff;
+            --border-light: rgba(244, 244, 248, 0.2);
         }
 
         body {
@@ -20,6 +22,7 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
 
         .container {
@@ -33,12 +36,13 @@
             border-radius: 16px;
             padding: 2rem;
             margin-bottom: 2rem;
+            border: 1px solid var(--border-light);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .section:hover, .profile-header:hover, .expertise-item:hover, .education-item:hover, .experience-item:hover, .publication-item:hover, .skill-category:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 0 20px rgba(165, 180, 252, 0.3);
         }
 
         h1, h2, h3, h4 {
@@ -82,19 +86,16 @@
         .name {
             font-size: 2.5rem;
             font-weight: bold;
-            text-align: center;
             margin-top: 1rem;
         }
 
         .title, .affiliation {
-            text-align: center;
             color: var(--text-light);
             opacity: 0.8;
         }
 
         .section-title {
             font-size: 2rem;
-            text-align: center;
             margin-bottom: 1.5rem;
         }
 
@@ -102,11 +103,13 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
+            justify-content: center;
         }
 
         .skill-list, .contact-links {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 0.5rem;
         }
     </style>
