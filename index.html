@@ -22,13 +22,15 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
 
         .container {
             max-width: 1200px;
             margin: auto;
             padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .section, .profile-header, .expertise-item, .education-item, .experience-item, .publication-item, .skill-category {
@@ -38,6 +40,9 @@
             margin-bottom: 2rem;
             border: 1px solid var(--border-light);
             transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            max-width: 1000px;
+            text-align: left;
         }
 
         .section:hover, .profile-header:hover, .expertise-item:hover, .education-item:hover, .experience-item:hover, .publication-item:hover, .skill-category:hover {
@@ -87,16 +92,19 @@
             font-size: 2.5rem;
             font-weight: bold;
             margin-top: 1rem;
+            text-align: center;
         }
 
         .title, .affiliation {
             color: var(--text-light);
             opacity: 0.8;
+            text-align: center;
         }
 
         .section-title {
             font-size: 2rem;
             margin-bottom: 1.5rem;
+            text-align: center;
         }
 
         .expertise-grid, .skills-grid {
