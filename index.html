@@ -3,226 +3,669 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biveen Shajilal - Scientist in Quantum Optics and Quantum Information at Quantum Innovation Centre (Q.InC), Agency for Science, Technology and Research, Singapore </title>
+    <title>Biveen Shajilal - Quantum Scientist</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #f4f4f4;
-            padding: 20px;
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: white;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .profile-header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 60px;
+            margin: 40px 0;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
             text-align: center;
         }
-        nav {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            margin-bottom: 20px;
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: float 20s linear infinite;
+            pointer-events: none;
         }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 5px 10px;
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-40px, -40px) rotate(360deg); }
         }
-        section {
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.6);
+            overflow: hidden;
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .affiliation {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
             margin-bottom: 30px;
         }
-        h1, h2, h3 {
-            color: #2c3e50;
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        .publication, .talk, .award {
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 50px;
+            margin: 30px 0;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .about-text {
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.8;
+            font-size: 1.1rem;
             margin-bottom: 20px;
+            text-align: justify;
         }
-        .summary {
-            font-style: italic;
-            color: #666;
-            margin-top: 5px;
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
-        .contact-info {
-            background-color: #f4f4f4;
-            padding: 15px;
-            border-radius: 5px;
+
+        .expertise-item {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
         }
-        .profile-image {
-            max-width: 300px;
-            height: auto;
-            border-radius: 5px;
-            margin: 20px auto;
-            display: block;
+
+        .expertise-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
-        .about-content {
+
+        .expertise-item h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .expertise-item p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .experience-item {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .experience-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .experience-date {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .experience-org {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .experience-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .education-item {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .education-degree {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .education-school {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .education-date {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .education-details {
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .skill-category h4 {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .skill-list {
             display: flex;
             flex-wrap: wrap;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 30px;
+            gap: 8px;
         }
-        .about-text {
-            flex: 1;
-            min-width: 300px;
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .collapsible {
-            background-color: #f1f1f1;
-            color: #444;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 15px;
-            margin-top: 15px;
+
+        .publication-item {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
-        .active, .collapsible:hover {
-            background-color: #ccc;
+
+        .publication-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
         }
-        .content {
-            padding: 0 18px;
-            display: none;
-            overflow: hidden;
-            background-color: #f9f9f9;
+
+        .publication-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
-        @media (max-width: 600px) {
-            .profile-image {
-                max-width: 100%;
+
+        .publication-authors {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .publication-venue {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .publication-description {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .publication-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .publication-link:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                padding: 40px 30px;
+            }
+
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .title {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 30px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Biveen Shajilal</h1>
-        <p>Biveen Shajilal - Scientist in Quantum Optics and Quantum Information at Quantum Innovation Centre (Q.InC), Agency for Science, Technology and Research, Singapore</p>
-    </header>
-
-    <nav>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#publications">Publications</a>
-        <a href="#talks">Talks</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <img src="headshot.jpg" alt="Deepesh Singh presenting" class="profile-image">
-            <div class="about-text">
-                <p>A quantum optics scientist from A*STAR Singapore with a Ph.D. from the Australian National University. My passion lies in conducting cutting-edge quantum optics and quantum information experiments. Currently, I am involved in the development of OPA systems capable of generating highly squeezed light (maximum measured squeezing levels of 12.6 dB, https://opg.optica.org/oe/fulltext.cfm?uri=oe-30-21-37213&id=507125) and entangled light sources at the telecom wavelength range, all with the aim of applying them in quantum metrology. Beyond this, in the past, I delved into the fabrication of micro WGM cavities. Additionally, I am also interested in theoretical investigations within quantum information, particularly focusing on quantum communication protocols./p>
+    <div class="container">
+        <div class="profile-header">
+            <div class="header-content">
+                <div class="profile-picture">
+                    👨‍🔬
+                </div>
+                <h1 class="name">Biveen Shajilal</h1>
+                <p class="title">Quantum Scientist & Research Leader</p>
+                <p class="affiliation">A*STAR Quantum Innovation Centre (Q.InC), Singapore</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:biveen.shajilal@gmail.com" class="contact-link">
+                        <span>✉</span> Email
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>🔗</span> LinkedIn
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>🎓</span> Google Scholar
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li>PhD in Physics, University of Queensland, Australia (2021-Present)</li>
-            <li>BTech (Honours) in Engineering Physics, IIT Bombay, India (2015-2019)</li>
-        </ul>
-    </section>
+        <div class="section">
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text">
+                I am a quantum physicist specializing in quantum optics and quantum information at Singapore's premier research institution, A*STAR's Quantum Innovation Centre (Q.InC). With a PhD from the Australian National University, I bridge the gap between cutting-edge quantum research and practical technological applications.
+            </p>
+            <p class="about-text">
+                Currently, I serve as a Scientist at A*STAR's Quantum Innovation Centre, where I lead groundbreaking research in squeezed light sources for quantum metrology while actively consulting for quantum technology startups. My work spans from fundamental quantum theory to the development of next-generation quantum communication systems.
+            </p>
+            <p class="about-text">
+                As a member of Prof. Ping Koy Lam's renowned research group and affiliated with the Centre for Quantum Technologies at NUS, I contribute to Singapore's position at the forefront of the global quantum revolution. My research focuses on experimental quantum optics, quantum state manipulation, and the practical implementation of quantum technologies for real-world applications.
+            </p>
+        </div>
 
-    <section id="publications">
-        <h2>Latest Publications</h2>
-        <div class="publication">
-            <strong>Saturating the maximum success probability bound for noiseless linear amplification using linear optics</strong> (2024)
-            <br>Joshua J. Guanzon, Matthew S. Winnel, Deepesh Singh, Austin P. Lund, Timothy C. Ralph
-            <br><a href="https://journals.aps.org/prxquantum/abstract/10.1103/PRXQuantum.5.020359?ft=1">PRX Quantum Link</a>
-            <p class="summary">Achieved optimal performance in noiseless linear amplification using linear optical elements.</p>
-        </div>
-        <div class="publication">
-            <strong>Deterministic Preparation of Optical Squeezed Cat and Gottesman-Kitaev-Preskill States</strong> (2024)
-            <br>Matthew S. Winnel, Joshua J. Guanzon, Deepesh Singh, and Timothy C. Ralph
-            <br><a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.230602">Physical Review Letters Link</a>
-            <p class="summary">Proposed a novel method for generating quantum states crucial for error correction in optical quantum computing.</p>
-        </div>
-        
-        <button type="button" class="collapsible">View All Publications</button>
-        <div class="content">
-            <div class="publication">
-                <strong>Proof-of-work consensus by quantum sampling</strong> (2023)
-                <br>Deepesh Singh, Boxiang Fu, Gopikrishnan Muraleedharan, Chen-Mou Cheng, Nicolas Roussy Newton, Peter P. Rohde, Gavin K. Brennen
-                <br><a href="https://arxiv.org/abs/2305.19865">arXiv:2305.19865</a>
-                <p class="summary">Introduced a quantum-inspired blockchain consensus mechanism that significantly reduces energy consumption.</p>
-            </div>
-            <div class="publication">
-                <strong>Unitary averaging with fault and loss tolerance</strong> (2023)
-                <br>Ryan J. Marshman, Deepesh Singh, Austin P. Lund, Timothy C. Ralph
-                <br><a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.109.062436">Physical Review A</a>
-                <p class="summary">Developed a fault-tolerant method for quantum state preparation using unitary averaging techniques.</p>
-            </div>
-            <div class="publication">
-                <strong>Optical cluster-state generation with unitary averaging</strong> (2022)
-                <br>Deepesh Singh, Austin P. Lund, Peter P. Rohde
-                <br><a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.110.012457">Physical Review A</a>
-                <p class="summary">Proposed a new method for generating large-scale quantum cluster states using unitary averaging.</p>
-            </div>
-            <div class="publication">
-                <strong>QuNet: Cost vector analysis & multi-path entanglement routing in quantum networks</strong> (2021)
-                <br>Hudson Leone, Nathaniel R. Miller, Deepesh Singh, Nathan K. Langford, Peter P. Rohde
-                <br><a href="https://arxiv.org/abs/2105.00418v2">arXiv:2105.00418v2</a>
-                <p class="summary">Developed an algorithm for optimizing entanglement distribution in quantum networks.</p>
+        <div class="section">
+            <h2 class="section-title">Research Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <h3>Quantum Optics</h3>
+                    <p>I specialize in advanced experimental quantum optics, squeezed light generation, and quantum state manipulation for precision measurements and quantum communication protocols.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Quantum Information</h3>
+                    <p>My work involves theoretical and experimental investigation of quantum entanglement, quantum communication resources, and quantum key distribution systems.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Quantum Metrology</h3>
+                    <p>I develop ultra-precise measurement systems using quantum-enhanced techniques, including shot-noise limited detection and advanced interferometry.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Technology Translation</h3>
+                    <p>I bridge academic research and industry applications through strategic consulting, feasibility studies, and technology development for quantum startups.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="talks">
-        <h2>Recent Talks & Presentations</h2>
-        <div class="talk">
-            <strong>Invited talk on 'Proof-of-work consensus by quantum sampling'</strong>
-            <br>QSI Seminar, Centre for Quantum Software and Information, University of Technology Sydney, Australia (June 21, 2024)
-        </div>
-        <div class="talk">
-            <strong>Poster on 'Proof-of-work consensus by quantum sampling'</strong>
-            <br>Annual Centre for Quantum Computation and Communications Technology (CQC2T) workshop, Magenta Shores, Australia (June 13, 2024)
-        </div>
-        
-        <button type="button" class="collapsible">View All Talks</button>
-        <div class="content">
-            <div class="talk">
-                <strong>Invited talk on 'Quantum blockchains'</strong>
-                <br>Quantum Systems Seminar, Cybersecurity and Quantum Systems, Data61, CSIRO, Australia (February 23, 2024)
+        <div class="section">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Scientist in Quantum Physics</div>
+                    <div class="experience-date">May 2023 - Present</div>
+                </div>
+                <div class="experience-org">A*STAR Quantum Innovation Centre (Q.InC), Singapore</div>
+                <div class="experience-description">
+                    Leading research in quantum optics and quantum information with focus on squeezed light sources for quantum metrology. Managing infrastructure development for quantum metrology lab, supervising PhD candidates and research engineers, and engaging with external stakeholders on grant proposals and technology translation.
+                </div>
             </div>
-            <div class="talk">
-                <strong>Talk on 'Proof-of-work consensus by quantum sampling'</strong>
-                <br>Quantum Information Processing (QIP) 2024 Conference, Taiwan (January 17, 2024)
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Private Consultant</div>
+                    <div class="experience-date">May 2023 - Present</div>
+                </div>
+                <div class="experience-org">Independent Contractor - Quantum Technologies</div>
+                <div class="experience-description">
+                    Providing strategic consulting for quantum technology startups, including feasibility studies on quantum key distribution systems, protocol feasibility analysis, hardware design, noise budgeting, and policy standardization for quantum technologies.
+                </div>
             </div>
-            <!-- Add more talks as needed -->
         </div>
-    </section>
 
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <div class="education-degree">PhD in Quantum Optics</div>
+                <div class="education-school">Australian National University, Canberra, Australia</div>
+                <div class="education-date">November 2018 - May 2023</div>
+                <div class="education-details">
+                    Thesis: "Experimental and theoretical investigation of quantum communication resources: A study on squeezing, entanglement and entropic accord"<br>
+                    Advisors: Dr. Jiri Janousek, Prof. Elanor Huntington, and Prof. Ping Koy Lam
+                </div>
+            </div>
 
-    <section id="contact" class="contact-info">
-        <h2>Contact Information</h2>
-        <p>Email: <a href="mailto:deepesh.singh@uq.edu.au">deepesh.singh@uq.edu.au</a></p>
-        <h3> Profiles</h3>
-        <p>
-            <a href="http://arxiv.org/a/singh_d_6">arXiv</a> |
-            <a href="https://scholar.google.com.au/citations?hl=en&user=9k-91HwAAAAJ">Google Scholar</a> |
-            <a href="https://www.linkedin.com/in/deepesh--singh/">LinkedIn</a> |
-            <a href="https://twitter.com/deepesh__singh">Twitter</a>
-        </p>
-    </section>
+            <div class="education-item">
+                <div class="education-degree">Master of Science in Photonics (Five Year Integrated Programme)</div>
+                <div class="education-school">Cochin University of Science and Technology, Kerala, India</div>
+                <div class="education-date">July 2013 - June 2018</div>
+                <div class="education-details">
+                    Specialization: Nonlinear optical materials, Whispering gallery mode heralded single photon sources<br>
+                    Received Prof. Leggett Award (Programme topper)
+                </div>
+            </div>
+        </div>
 
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
+        <div class="section">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Quantum Technologies</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Quantum Information Theory</span>
+                        <span class="skill-tag">Experimental Quantum Optics</span>
+                        <span class="skill-tag">Squeezed Light Sources</span>
+                        <span class="skill-tag">Quantum Metrology</span>
+                        <span class="skill-tag">Quantum Entanglement</span>
+                        <span class="skill-tag">QKD Systems</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Optical Systems</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Free Space Optics</span>
+                        <span class="skill-tag">Fiber Optics</span>
+                        <span class="skill-tag">Laser Systems (1550nm, 1064nm)</span>
+                        <span class="skill-tag">Optical Instrumentation</span>
+                        <span class="skill-tag">Interferometry</span>
+                        <span class="skill-tag">Homodyne Detection</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Electronics & Control</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">RF Electronics</span>
+                        <span class="skill-tag">FPGA-based Systems</span>
+                        <span class="skill-tag">Analog Circuits</span>
+                        <span class="skill-tag">Feedback Control</span>
+                        <span class="skill-tag">Red-Pitaya Systems</span>
+                        <span class="skill-tag">Noise Budgeting</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Software & Programming</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Mathematica</span>
+                        <span class="skill-tag">LabView</span>
+                        <span class="skill-tag">Julia</span>
+                        <span class="skill-tag">Autodesk Fusion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-        }
-    </script>
+        <div class="section">
+            <h2 class="section-title">Selected Publications</h2>
+            
+            <div class="publication-item">
+                <div class="publication-title">Spin correlations in recirculating multipass alkali cells for advancing quantum magnetometry</div>
+                <div class="publication-authors">Q. L. Kee, L. Zhao, R. Lecamwasam, B. Shajilal, X. Liang, J. K. Jose, Y. Chen, P. K. Lam, T. Wang</div>
+                [cite_start]<div class="publication-venue">arXiv:2506.14160 [quant-ph], Under review in IOP Quantum Science and Technology [cite: 39, 40]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Attainability of quantum state discrimination bounds with collective measurements on finite copies</div>
+                <div class="publication-authors">L. O. Conlon, J. M. Koh, B. Shajilal, J. Sidhu, S. Tserkis, P. K. Lam, S. M. Assad</div>
+                [cite_start]<div class="publication-venue">Physical Review A 111.2 (2025): 022438 [cite: 41, 42]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Improving Gaussian channel simulation using nonunity-gain heralded quantum teleportation</div>
+                <div class="publication-authors">B. Shajilal, L. O. Conlon, A. Walsh, S. Tserkis, J. Zhao, J. Janousek, P. K. Lam, S. M. Assad</div>
+                [cite_start]<div class="publication-venue">Physical Review Applied 22.5 (2024): 054070 [cite: 43, 44]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Mapping Guaranteed Positive Secret Key Rates for Continuous Variable Quantum Key Distribution</div>
+                <div class="publication-authors">M. Sayat, O. Thearle, B. Shajilal, S. P. Kish, P. K. Lam, N. Rattenbury, J. Cater</div>
+                <div class="publication-venue">Entropy 26, no. [cite_start]10 (2024): 865 [cite: 45, 46, 47]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Verifying the security of a continuous variable quantum communication protocol via quantum metrology</div>
+                <div class="publication-authors">B. Shajilal, L. O. Conlon, A. Walsh, J. Zhao, J. Janousek, P. K. Lam, S. M. Assad</div>
+                <div class="publication-venue">npj Quantum Information. [cite_start]2024 Apr 4;10(1):35 [cite: 48, 49, 50]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Satellite-to-Ground Continuous Variable Quantum Key Distribution: The Gaussian and Discrete Modulated Protocols in Low Earth Orbit</div>
+                <div class="publication-authors">M. Sayat, B. Shajilal, S. P. Kish, S. M. Assad, T. Symul, P. K. Lam, N. Rattenbury, J. Cater</div>
+                [cite_start]<div class="publication-venue">IEEE Transactions on Communications, doi: 10.1109/TCOMM.2024.3359295 [cite: 52, 53, 54]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Enhancing quantum teleportation efficacy with noiseless linear amplification</div>
+                <div class="publication-authors">J. Zhao, H. Jeng L. O. Conlon, S. Tserkis, B. Shajilal, K. Liu, T. C. Ralph, S. M. Assad, P. K. Lam</div>
+                <div class="publication-venue">Nature Communications. [cite_start]2023 Aug 7;14(1):4745 [cite: 55, 56, 57]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Surpassing the repeaterless bound with a photon-number encoded measurement-device-independent quantum key distribution protocol</div>
+                <div class="publication-authors">O. Erkilic, L. O. Conlon, B. Shajilal, S. P. Kish, S. Tserkis, Y.S. Kim, P.K. Lam, S. M. Assad</div>
+                [cite_start]<div class="publication-venue">npj Quantum Information, 2023 Mar 28;9(1):29 [cite: 58, 59, 60]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">12.6 dB squeezed light at 1550 nm from a bow-tie cavity for long-term high duty cycle operation</div>
+                <div class="publication-authors">B. Shajilal, A. Tranter, O. Thearle, Y. Lu, E. Huntington, S. M. Assad, P. K. Lam, and J. Janousek</div>
+                <div class="publication-venue">Optics Express. [cite_start]2022 Oct 10;30(21):37213-23 [cite: 61, 62]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">A new entropic quantum correlation measure for adversarial systems</div>
+                <div class="publication-authors">B. Shajilal, E. Huntington, P. K. Lam, S.M. Assad</div>
+                <div class="publication-venue">Scientific Reports. [cite_start]2023 Jan 25;13(1):1436 [cite: 63, 64, 65]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Brillouin optomechanics: from strong coupling to single-phonon-level operations</div>
+                <div class="publication-authors">G. Enzian, L. Freisem, J. J. Price, A.O. Svela, J. Clarke, M. Szczykulska, J. Nunn, I. A. Walmsley, J. Silver, L. D. Bino, S. Zhang, P. D. Haye, B. Shajilal, J. Janousek, B. C. Buchler, P. K. Lam, M. R. Vanner</div>
+                <div class="publication-venue">Proceedings of Optical and Quantum Sensing and Precision Metrology II; [cite_start]120160E (2022) [cite: 66, 67, 68, 69]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Non-Gaussian Mechanical Motion via Single and Multiphonon Subtraction from a Thermal State</div>
+                <div class="publication-authors">G. Enzian, L. Freisem, J. J. Price, A.O. Svela, J. Clarke, B. Shajilal, J. Janousek, B. C. Buchler, P. K. Lam, M. R. Vanner</div>
+                [cite_start]<div class="publication-venue">Physical Review Letters 127, 243601 (2021) [cite: 70, 71, 72]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Single-and Multi-Phonon Subtraction to a Mechanical Thermal State via Optomechanics</div>
+                <div class="publication-authors">G. Enzian, L. Freisem, J. J. Price, A. O. Svela, J. Clarke, B. Shajilal, J. Janousek, B. C. Buchler, P. K. Lam, M. R. Vanner</div>
+                [cite_start]<div class="publication-venue">Laser Science 2021, (pp. LM6E-1), Technical Digest Series, Optica Publishing Group (2021) [cite: 73, 74, 75]</div>
+            </div>
+
+            <div class="publication-item">
+                <div class="publication-title">Observing sub-Poissonian statistics of twisted single photons using oscilloscope</div>
+                <div class="publication-authors">N. Lal, B. Shajilal, A. Ali, C. Perumangatt, R.P. Singh</div>
+                [cite_start]<div class="publication-venue">Review of Scientific Instruments 90, 113104 (2019) [cite: 76, 77, 78]</div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="publication-link">View all publications on Google Scholar →</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
