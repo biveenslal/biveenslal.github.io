@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biveen Shajilal - Quantum Scientist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, 
+                #f8f9ff 0%, 
+                #e8f4f8 25%, 
+                #f0f8ff 50%, 
+                #f5f0ff 75%, 
+                #fff8f0 100%);
+            min-height: 100vh;
+            color: #2a3142;
+            line-height: 1.6;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Quantum Wave Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(147, 197, 253, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(196, 181, 253, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(134, 239, 172, 0.1) 0%, transparent 50%);
+            animation: quantumWave 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes quantumWave {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: scale(1.1) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+
+        /* Quantum Particles Animation */
+        .quantum-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: linear-gradient(45deg, #a7f3d0, #bfdbfe);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            opacity: 0.4;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 18s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 15s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 6s; animation-duration: 20s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 8s; animation-duration: 14s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 10s; animation-duration: 16s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 12s; animation-duration: 22s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 14s; animation-duration: 13s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 16s; animation-duration: 19s; }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.9) 0%, 
+                rgba(243, 244, 246, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 60px;
+            margin: 40px 0;
+            box-shadow: 
+                0 25px 50px rgba(147, 197, 253, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(147, 197, 253, 0.2);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(147, 197, 253, 0.05) 1px, transparent 1px),
+                radial-gradient(circle, rgba(196, 181, 253, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            animation: quantumDots 25s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes quantumDots {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-60px, -60px) rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 4px solid rgba(147, 197, 253, 0.3);
+            box-shadow: 
+                0 10px 30px rgba(147, 197, 253, 0.15),
+                0 0 0 8px rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, 
+                rgba(147, 197, 253, 0.1), 
+                rgba(196, 181, 253, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(147, 197, 253, 0.6);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-picture::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                rgba(147, 197, 253, 0.1) 90deg,
+                transparent 180deg,
+                rgba(196, 181, 253, 0.1) 270deg,
+                transparent 360deg
+            );
+            animation: quantumSpin 8s linear infinite;
+        }
+
+        @keyframes quantumSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #1e293b, #475569, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 20px rgba(147, 197, 253, 0.1);
+            letter-spacing: -0.02em;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            color: #475569;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .affiliation {
+            font-size: 1.1rem;
+            color: #64748b;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #475569;
+            text-decoration: none;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.8) 0%, 
+                rgba(243, 244, 246, 0.8) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(147, 197, 253, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link:hover {
+            background: linear-gradient(135deg, 
+                rgba(147, 197, 253, 0.1) 0%, 
+                rgba(196, 181, 253, 0.1) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(147, 197, 253, 0.15);
+            border-color: rgba(147, 197, 253, 0.4);
+        }
+
+        .section {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.9) 0%, 
+                rgba(248, 250, 252, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 50px;
+            margin: 30px 0;
+            box-shadow: 
+                0 25px 50px rgba(147, 197, 253, 0.08),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(147, 197, 253, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                rgba(147, 197, 253, 0.3) 0%, 
+                rgba(196, 181, 253, 0.3) 50%, 
+                rgba(134, 239, 172, 0.3) 100%);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text {
+            color: #374151;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .expertise-item {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(248, 250, 252, 0.6) 100%);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(147, 197, 253, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(147, 197, 253, 0.05) 0%, 
+                rgba(196, 181, 253, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .expertise-item:hover::before {
+            opacity: 1;
+        }
+
+        .expertise-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(147, 197, 253, 0.15);
+            border-color: rgba(147, 197, 253, 0.4);
+        }
+
+        .expertise-item h3 {
+            color: #1e293b;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .expertise-item p {
+            color: #4b5563;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-item, .education-item, .publication-item {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(248, 250, 252, 0.6) 100%);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(147, 197, 253, 0.2);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item::before, .education-item::before, .publication-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(147, 197, 253, 0.05) 0%, 
+                rgba(196, 181, 253, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-item:hover::before, .education-item:hover::before, .publication-item:hover::before {
+            opacity: 1;
+        }
+
+        .experience-item:hover, .education-item:hover, .publication-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(147, 197, 253, 0.12);
+            border-color: rgba(147, 197, 253, 0.3);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-title, .education-degree {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e293b;
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-date, .education-date {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-org, .education-school {
+            color: #475569;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-description, .education-details {
+            color: #374151;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(248, 250, 252, 0.6) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(147, 197, 253, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(147, 197, 253, 0.12);
+        }
+
+        .skill-category h4 {
+            color: #1e293b;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, 
+                rgba(147, 197, 253, 0.2) 0%, 
+                rgba(196, 181, 253, 0.2) 100%);
+            color: #1e293b;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(147, 197, 253, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, 
+                rgba(147, 197, 253, 0.3) 0%, 
+                rgba(196, 181, 253, 0.3) 100%);
+            transform: translateY(-1px);
+        }
+
+        .publication-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+        }
+
+        .publication-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .publication-title a:hover {
+            color: #3b82f6;
+        }
+
+        .publication-authors {
+            color: #475569;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .publication-venue {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .publication-description {
+            color: #4b5563;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .publication-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .publication-link:hover {
+            color: #1d4ed8;
+            border-bottom-color: #1d4ed8;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                padding: 40px 30px;
+            }
+
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .title {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 30px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quantum-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+
+ <div class="container">
+        <div class="profile-header">
+            <div class="header-content">
+                <div class="profile-picture">
+                    <img src="headshot.jpeg" alt="Profile Picture" class="profile-image">
+                </div>
+                <h1 class="name">Biveen Shajilal</h1>
+                <p class="title">Quantum Physicist</p>
+                <p class="affiliation">Quantum Innovation Centre (Q.InC), Agency for Science, Technology and Research (A*STAR), Singapore</p>
+                
+                <div class="contact-links">
+                    <a href="Biveen_CV.pdf" class="contact-link">
+                        <span>📄</span> Résumé
+                    </a>
+                    <a href="mailto:biveen.shajilal@gmail.com" class="contact-link">
+                        <span>📫</span> Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/biveen-shajilal-3a89a4a4" class="contact-link">
+                        <span>🔗</span> LinkedIn
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=_PFmphAAAAAJ&hl=en" class="contact-link">
+                        <span>🎓</span> Google Scholar
+                    </a>
+                     <a href="https://x.com/biveenslal" class="contact-link">
+                        <span>🐦</span> Twitter(or X)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text">
+                I am a quantum physicist specializing in quantum optics and quantum information at Singapore's premier research institution, A*STAR's Quantum Innovation Centre (Q.InC). With a PhD from the Australian National University, I bridge the gap between cutting-edge quantum research and practical technological applications.
+            </p>
+            <p class="about-text">
+                Currently, I serve as a Scientist at A*STAR's Quantum Innovation Centre, where I lead groundbreaking research in squeezed light sources for quantum metrology while actively consulting for quantum technology startups. My work spans from fundamental quantum theory to the development of next-generation quantum communication systems.
+            </p>
+            <p class="about-text">
+                As a member of Prof. Ping Koy Lam's renowned research group and affiliated with the Centre for Quantum Technologies at NUS, I contribute to Singapore's position at the forefront of the global quantum revolution. My research focuses on experimental quantum optics, quantum state manipulation, and the practical implementation of quantum technologies for real-world applications.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Research Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <h3>Quantum Optics</h3>
+                    <p>I specialize in advanced experimental quantum optics, squeezed light generation, and quantum state manipulation for precision measurements and quantum communication protocols.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Quantum Information</h3>
+                    <p>My work involves theoretical and experimental investigation of quantum entanglement, quantum communication resources, and quantum key distribution systems.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Quantum Metrology</h3>
+                    <p>I develop ultra-precise measurement systems using quantum-enhanced techniques, including shot-noise limited detection and advanced interferometry.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Technology Translation</h3>
+                    <p>I bridge academic research and industry applications through strategic consulting, feasibility studies, and technology development for quantum startups.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Scientist in Quantum Physics</div>
+                    <div class="experience-date">May 2023 - Present</div>
+                </div>
+                <div class="experience-org">A*STAR Quantum Innovation Centre (Q.InC), Singapore</div>
+                <div class="experience-description">
+                    Leading research in quantum optics and quantum information with focus on squeezed light sources for quantum metrology. Managing infrastructure development for quantum metrology lab, supervising PhD candidates and research engineers, and engaging with external stakeholders on grant proposals and technology translation.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Private Consultant</div>
+                    <div class="experience-date">May 2023 - Present</div>
+                </div>
+                <div class="experience-org">Independent Contractor - Quantum Technologies</div>
+                <div class="experience-description">
+                    Providing strategic consulting for quantum technology startups, including feasibility studies on quantum key distribution systems, protocol feasibility analysis, hardware design, noise budgeting, and policy standardization for quantum technologies.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <div class="education-degree">PhD in Quantum Optics</div>
+                <div class="education-school">Australian National University, Canberra, Australia</div>
+                <div class="education-date">November 2018 - May 2023</div>
+                <div class="education-details">
+                    Thesis: "Experimental and theoretical investigation of quantum communication resources: A study on squeezing, entanglement and entropic accord"<br>
+                    Advisors: Dr. Jiri Janousek, Prof. Elanor Huntington, and Prof. Ping Koy Lam
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-degree">Master of Science in Photonics (Five Year Integrated Programme)</div>
+                <div class="education-school">Cochin University of Science and Technology, Kerala, India</div>
+                <div class="education-date">July 2013 - June 2018</div>
+                <div class="education-details">
+                    Specialization: Nonlinear optical materials, Whispering gallery mode heralded single photon sources<br>
+                    Received Prof. Leggett Award (Programme topper)
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Quantum Technologies</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Quantum Information Theory</span>
+                        <span class="skill-tag">Experimental Quantum Optics</span>
+                        <span class="skill-tag">Squeezed Light Sources</span>
+                        <span class="skill-tag">Quantum Metrology</span>
+                        <span class="skill-tag">Quantum Entanglement</span>
+                        <span class="skill-tag">QKD Systems</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Optical Systems</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Free Space Optics</span>
+                        <span class="skill-tag">Fiber Optics</span>
+                        <span class="skill-tag">Laser Systems (1550nm, 1064nm)</span>
+                        <span class="skill-tag">Optical Instrumentation</span>
+                        <span class="skill-tag">Interferometry</span>
+                        <span class="skill-tag">Homodyne Detection</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Electronics & Control</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">RF Electronics</span>
+                        <span class="skill-tag">FPGA-based Systems</span>
+                        <span class="skill-tag">Analog Circuits</span>
+                        <span class="skill-tag">Feedback Control</span>
+                        <span class="skill-tag">Noise Budgeting</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Software & Programming</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Mathematica</span>
+                        <span class="skill-tag">LabView</span>
+                        <span class="skill-tag">Julia</span>
+                        <span class="skill-tag">Autodesk Fusion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Selected Publications</h2>
+<style>
+        .publication-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="publication-item">
+    <div class="publication-title">
+        <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-30-21-37213&id=507125" target="_blank">
+            12.6 dB squeezed light at 1550 nm from a bow-tie cavity for long-term high duty cycle operation
+        </a>
+    </div>
+    <div class="publication-authors">B. Shajilal, A. Tranter, O. Thearle, Y. Lu, E. Huntington, S. M. Assad, P. K. Lam, and J. Janousek</div>
+    <div class="publication-venue">Optics Express. 2022 Oct 10; 30(21): 37213-23 </div>
+</div>
+
+<div class="publication-item">
+    <div class="publication-title">
+        <a href="https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.22.054070" target="_blank">
+            Improving Gaussian channel simulation using nonunity-gain heralded quantum teleportation
+        </a>
+    </div>
+    <div class="publication-authors">B. Shajilal, L. O. Conlon, A. Walsh, S. Tserkis, J. Zhao, J. Janousek, P. K. Lam, S. M. Assad</div>
+    <div class="publication-venue">Physical Review Applied 22.5 (2024): 054070 </div>
+</div>
+
+<div class="publication-item">
+    <div class="publication-title">
+        <a href="https://www.nature.com/articles/s41534-024-00834-9" target="_blank">
+            Verifying the security of a continuous variable quantum communication protocol via quantum metrology
+        </a>
+    </div>
+    <div class="publication-authors">B. Shajilal, L. O. Conlon, A. Walsh, J. Zhao, J. Janousek, P. K. Lam, S. M. Assad</div>
+    <div class="publication-venue">npj Quantum Information. 2024 Apr 4; 10(1): 35 </div>
+</div>
+
+<div class="publication-item">
+    <div class="publication-title">
+        <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.127.243601" target="_blank">
+            Non-Gaussian Mechanical Motion via Single and Multiphonon Subtraction from a Thermal State
+        </a>
+    </div>
+    <div class="publication-authors">G. Enzian, L. Freisem, J. J. Price, A.O. Svela, J. Clarke, B. Shajilal, J. Janousek, B. C. Buchler, P. K. Lam, M. R. Vanner</div>
+    <div class="publication-venue">Physical Review Letters 127, 243601 (2021) </div>
+</div>
+
+<div class="publication-item">
+    <div class="publication-title">
+        <a href="https://ieeexplore.ieee.org/document/10415457" target="_blank">
+            Satellite-to-Ground Continuous Variable Quantum Key Distribution: The Gaussian and Discrete Modulated Protocols in Low Earth Orbit
+        </a>
+    </div>
+    <div class="publication-authors">M. Sayat, B. Shajilal, S. P. Kish, S. M. Assad, T. Symul, P. K. Lam, N. Rattenbury, J. Cater</div>
+    <div class="publication-venue">IEEE Transactions on Communications, doi: 10.1109/TCOMM.2024.3359295 </div>
+</div>
+
+<div class="publication-item">
+    <div class="publication-title">
+        <a href="https://www.nature.com/articles/s41467-023-40438-z" target="_blank">
+            Enhancing quantum teleportation efficacy with noiseless linear amplification
+        </a>
+    </div>
+    <div class="publication-authors">J. Zhao, H. Jeng, L. O. Conlon, S. Tserkis, B. Shajilal, K. Liu, T. C. Ralph, S. M. Assad, P. K. Lam</div>
+    <div class="publication-venue">Nature Communications. 2023 Aug 7; 14(1): 4745 </div>
+</div>
+
+<div class="publication-item">
+    <div class="publication-title">
+        <a href="https://www.nature.com/articles/s41534-023-00698-5" target="_blank">
+            Surpassing the repeaterless bound with a photon-number encoded measurement-device-independent quantum key distribution protocol
+        </a>
+    </div>
+    <div class="publication-authors">O. Erkilic, L. O. Conlon, B. Shajilal, S. P. Kish, S. Tserkis, Y.S. Kim, P.K. Lam, S. M. Assad</div>
+    <div class="publication-venue">npj Quantum Information, 2023 Mar 28; 9(1): 29 </div>
+</div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://scholar.google.com/citations?user=_PFmphAAAAAJ&hl=en" class="publication-link">View all publications on Google Scholar →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
