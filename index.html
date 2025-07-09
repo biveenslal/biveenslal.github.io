@@ -46,7 +46,7 @@
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Adjust for centering */
             width: calc(100% - 40px); /* Full width minus margin on both sides */
-            max-width: 1160px; /* Max width to match container, minus padding */
+            max-width: 1200px; /* Max width to match container, minus padding */
             z-index: 1000;
             box-shadow: 0 5px 20px rgba(0, 200, 255, 0.1);
             border: 1px solid rgba(0, 200, 255, 0.2); /* Added border */
@@ -135,35 +135,17 @@
             100% { background-position: 100% 100%; }
         }
 
-
-
-	/* Updated quantum-inspired animation for rotation */
-        .profile-header::after {
-            content: '';
+        /* Cluster animation for profile-header background */
+        #nodeClusterCanvas {
             position: absolute;
-            top: -200%; /* Adjust to ensure full coverage during rotation */
-            left: -200%; /* Adjust to ensure full coverage during rotation */
-            width: 500%; /* Make larger to avoid gaps during rotation */
-            height: 500%; /* Make larger to avoid gaps during rotation */
-            background: 
-                radial-gradient(circle at 20% 70%, rgba(0, 255, 255, 0.08) 1px, transparent 1.5px),
-                radial-gradient(circle at 80% 30%, rgba(200, 50, 255, 0.08) 1px, transparent 1.5px);
-            background-size: 50px 50px, 30px 30px; /* Different sizes for dual patterns */
-            animation: quantumGridRotate 50s linear infinite, quantumFlow 70s linear infinite reverse; /* Updated animation name */
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
-            transform-origin: center center; /* Set origin for rotation */
+            background-color: transparent; /* Make canvas background transparent to show existing header background */
+            border-radius: 20px; /* Match profile-header border-radius */
         }
-
-        @keyframes quantumGridRotate { /* New keyframes for rotation */
-       	    0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-40px, -40px) rotate(360deg); }}
-
-        @keyframes quantumFlow {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-40px, -40px) rotate(360deg); }}
-
-
 
         .header-content {
             position: relative;
@@ -171,10 +153,10 @@
         }
 
         .profile-picture {
-            width: 200px; /* Slightly smaller */
-            height: 200px;
+            width: 190px; /* Slightly smaller */
+            height: 190px;
             border-radius: 50%;
-            margin: 0 auto 25px; /* Adjust margin */
+            margin: 0 auto 40px; /* Adjust margin */
             border: 3px solid rgba(0, 200, 255, 0.4); /* Blue border */
             box-shadow: 0 0 25px rgba(0, 200, 255, 0.5), inset 0 0 10px rgba(0, 200, 255, 0.2); /* Inner and outer glow */
             background: linear-gradient(135deg, rgba(0, 200, 255, 0.1), rgba(150, 50, 255, 0.1)); /* Gradient background */
@@ -198,7 +180,17 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            opacity: 0.9; /* Slight transparency for image */
+            opacity: 1; /* Slight transparency for image */
+        }
+
+        .name-info-box { /* New style for the box around name, title, and affiliation */
+            background: rgba(0, 0, 0, 0.5); /* Changed to black with 30% opacity */
+            border: 1px solid rgba(0, 200, 255, 0.2); /* Border */
+            border-radius: 20px; /* Rounded corners for the box */
+            padding: 40px 10px; /* Padding inside the box */
+            margin: 25px auto; /* Center the box and add margin */
+            max-width: 1000px; /* Increased max-width for wider appearance */
+            box-shadow: 0 0 25px rgba(0, 200, 255, 0.1); /* Subtle shadow */
         }
 
         .name {
@@ -224,7 +216,7 @@
             font-size: 1.05rem;
             color: #B0B0B0; /* Neutral grey */
             font-weight: 400;
-            margin-bottom: 25px;
+            margin-bottom: 12px; /* Remove bottom margin as it's now in the box */
         }
 
         .contact-links {
@@ -232,6 +224,7 @@
             justify-content: center;
             gap: 15px; /* Slightly reduced gap */
             flex-wrap: wrap;
+            margin-top: 25px; /* Add margin to separate from the new box */
         }
 
         .contact-link {
@@ -241,7 +234,7 @@
             color: #A0FFFF; /* Lighter cyan for links */
             text-decoration: none;
             padding: 10px 20px; /* Slightly smaller padding */
-            background: rgba(0, 200, 255, 0.08); /* Blue-tinted background */
+            background: rgba(0, 0, 0, 0.5);  /* Black-tinted background */
             border-radius: 10px; /* Slightly less rounded */
             border: 1px solid rgba(0, 200, 255, 0.2);
             transition: all 0.3s ease;
@@ -608,6 +601,10 @@
                 font-size: 0.75rem; /* Smaller font for mobile */
                 padding: 5px 8px;
             }
+            .name-info-box { /* Adjust for smaller screens */
+                padding: 10px 15px;
+                margin: 15px auto;
+            }
         }
     </style>
 </head>
@@ -625,14 +622,16 @@
         </nav>
 
         <div class="profile-header">
+            <canvas id="nodeClusterCanvas"></canvas>
             <div class="header-content">
                 <div class="profile-picture">
                     <img src="headshot.jpeg" alt="Profile Picture" class="profile-image">
                 </div>
-                <h1 class="name">Biveen Shajilal</h1>
-                <p class="title">Quantum Physicist</p>
-                <p class="affiliation">Quantum Innovation Centre (Q.InC), Agency for Science, Technology and Research (A*STAR), Singapore</p>
-                
+                <div class="name-info-box">
+                    <h1 class="name">Biveen Shajilal</h1>
+                    <p class="title">Quantum Physicist</p>
+                    <p class="affiliation">Quantum Innovation Centre (Q.InC), Agency for Science, Technology and Research (A*STAR), Singapore</p>
+                </div>
                 <div class="contact-links">
 
 		    <a href="mailto:biveen.shajilal@gmail.com" class="contact-link" target="_blank">
@@ -910,6 +909,194 @@
                     });
                 }
             });
+        });
+
+        // Cluster Animation Script - Directly embedded from cluster.html
+        // Get the canvas element and its 2D rendering context
+        const canvas = document.getElementById('nodeClusterCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set initial canvas dimensions
+        // Canvas dimensions should match the parent (.profile-header) size
+        function setCanvasDimensions() {
+            const parent = canvas.parentElement;
+            canvas.width = parent.clientWidth;
+            canvas.height = parent.clientHeight;
+        }
+        setCanvasDimensions(); // Set on load
+
+        // Node properties
+        const NODE_COUNT = 50; // Number of nodes in the cluster
+        const NODE_RADIUS = 4; // Radius of each node
+        const CONNECTION_DISTANCE = 100; // Max distance for nodes to connect with a line
+        const NODE_SPEED = 0.5; // Base speed of nodes
+        const GLOW_BLUR = 8; // Blur radius for the glow effect
+	const BASE_OPACITY = 0.3; // Base opacity for nodes and connections (reduced from 0.6)
+
+
+        // Array to store all node objects
+        const nodes = [];
+
+	// Define neon colors with an alpha channel
+        const NEON_COLORS = [
+            `rgba(255, 153, 51, ${BASE_OPACITY})`, // Neon Orange
+            `rgba(255, 255, 51, ${BASE_OPACITY})`, // Neon Yellow
+            `rgba(255, 51, 102, ${BASE_OPACITY})`, // Neon Red (a vibrant pinkish red)
+            `rgba(51, 255, 255, ${BASE_OPACITY})`  // Neon Cyan
+        ];
+	
+        /**
+         * Represents a single node in the cluster.
+         * @param {number} x - Initial x-coordinate.
+         * @param {number} y - Initial y-coordinate.
+         * @param {number} radius - Radius of the node.
+         * @param {string} color - Color of the node.
+         * @param {number} dx - Velocity in x-direction.
+         * @param {number} dy - Velocity in y-direction.
+         */
+        class Node {
+            constructor(x, y, radius, color, dx, dy) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.dx = dx;
+                this.dy = dy;
+            }
+
+            /**
+             * Draws the node on the canvas with a glow effect.
+             */
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+
+                // Apply glow effect
+                ctx.shadowBlur = GLOW_BLUR;
+                ctx.shadowColor = this.color;
+
+                ctx.fill();
+                ctx.closePath();
+
+                // Reset shadow properties after drawing the node
+                ctx.shadowBlur = 0;
+                ctx.shadowColor = 'transparent';
+            }
+
+            /**
+             * Updates the node's position and handles boundary collisions.
+             */
+            update() {
+                // Reverse direction if hitting horizontal boundaries
+                if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+                    this.dx = -this.dx;
+                }
+                // Reverse direction if hitting vertical boundaries
+                if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+                    this.dy = -this.dy;
+                }
+
+                // Update position
+                this.x += this.dx;
+                this.y += this.dy;
+
+                this.draw();
+            }
+        }
+
+        /**
+         * Generates a random neon color from the predefined list.
+         * @returns {string} A random neon hex color string.
+         */
+        function getRandomNeonColor() {
+            return NEON_COLORS[Math.floor(Math.random() * NEON_COLORS.length)];
+        }
+
+        /**
+         * Initializes all nodes with random properties.
+         */
+        function initNodes() {
+            nodes.length = 0; // Clear existing nodes
+            for (let i = 0; i < NODE_COUNT; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const radius = NODE_RADIUS;
+                const color = getRandomNeonColor(); // Use neon colors
+                // Random velocity between -NODE_SPEED and NODE_SPEED
+                const dx = (Math.random() - 0.5) * 2 * NODE_SPEED;
+                const dy = (Math.random() - 0.5) * 2 * NODE_SPEED;
+                nodes.push(new Node(x, y, radius, color, dx, dy));
+            }
+        }
+
+        /**
+         * Calculates the distance between two nodes.
+         * @param {Node} node1 - The first node.
+         * @param {Node} node2 - The second node.
+         * @returns {number} The distance between the two nodes.
+         */
+        function getDistance(node1, node2) {
+            const dx = node1.x - node2.x;
+            const dy = node1.y - node2.y;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        /**
+         * Draws lines between nodes that are within the CONNECTION_DISTANCE.
+         */
+        function drawConnections() {
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const node1 = nodes[i];
+                    const node2 = nodes[j];
+                    const distance = getDistance(node1, node2);
+
+                    if (distance < CONNECTION_DISTANCE) {
+                        ctx.beginPath();
+                        ctx.moveTo(node1.x, node1.y);
+                        ctx.lineTo(node2.x, node2.y);
+                        // Line opacity fades with distance
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - (distance / CONNECTION_DISTANCE)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+        }
+
+        /**
+         * The main animation loop.
+         */
+        function animate() {
+            // Clear the entire canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update and draw each node
+            nodes.forEach(node => {
+                node.update();
+            });
+
+            // Draw connections between nodes
+            drawConnections();
+
+            // Request the next animation frame
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize nodes when the window loads
+        window.onload = function() {
+            setCanvasDimensions();
+            initNodes();
+            animate(); // Start the animation loop
+        };
+
+        // Handle window resizing to make the canvas responsive
+        window.addEventListener('resize', () => {
+            setCanvasDimensions();
+            // Re-initialize nodes to fit new dimensions, or adjust positions if preferred
+            initNodes(); // Re-initializes nodes to prevent them from being out of bounds
         });
     </script>
 </body>
