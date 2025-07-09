@@ -618,6 +618,7 @@
                 <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
                 <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
                 <li class="nav-item"><a href="#publications" class="nav-link">Publications</a></li>
+		<li class="nav-item"><a href="#talks" class="nav-link">Talks</a></li>
             </ul>
         </nav>
 
@@ -664,7 +665,7 @@
                 I am a quantum physicist specializing in quantum optics and quantum information at Singapore's premier research institution, A*STAR's Quantum Innovation Centre (Q.InC). With a PhD from the Australian National University, I bridge the gap between cutting-edge quantum research and practical technological applications.
             </p>
             <p class="about-text">
-                Currently, I serve as a Scientist at A*STAR's Quantum Innovation Centre, where I lead groundbreaking research in squeezed light sources for quantum metrology while actively consulting for quantum technology startups. I bridge academic research and industry applications through strategic consulting, feasibility studies, and technology development for quantum startups. My work spans from fundamental quantum theory to the development of next-generation quantum communication systems.
+                Currently, I serve as a Scientist at A*STAR's Quantum Innovation Centre, where I lead groundbreaking research in squeezed light sources for quantum metrology, quantum computing and quantum communications while actively consulting for quantum technology startups. I bridge academic research and industry applications through strategic consulting, feasibility studies, and technology development for quantum startups. My work spans from fundamental quantum theory to the development of next-generation quantum communication systems.
             </p>
             <p class="about-text">
                 As a member of Prof. Ping Koy Lam's renowned research group and affiliated with the Centre for Quantum Technologies at NUS, I contribute to Singapore's position at the forefront of the global quantum revolution. My research focuses on experimental quantum optics, quantum state manipulation, and the practical implementation of quantum technologies for real-world applications.
@@ -884,9 +885,52 @@
                 <a href="https://scholar.google.com/citations?user=_PFmphAAAAAJ&hl=en" class="publication-link" target="_blank">View all publications on Google Scholar →</a>
             </div>
         </div>
+
+        <div class="section" id="talks">
+            <h2 class="section-title">Recent Talks and Presentations</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">The International Network in Space Quantum Technologies (INSQT) Workshop 2024</div>
+                    <div class="experience-date">Mar. 20 – 22, 2024, Ahmedabad, India</div>
+                </div>
+                <div class="experience-org">INSQT is led by the Department of Physics, University of Strathclyde and funded by the UK Engineering Physical Sciences and Engineering Council (EPSRC) and the UK Research and Innovation (UKRI)</div>
+                <div class="experience-description">
+            Invited talk on "Continuous variable quantum communications: Resources, Gaussian Channel Simulation and Verification through Quantum
+Metrology"
+		</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">American Physical Society Annual March Meeting 2024</div>
+                    <div class="experience-date">Mar. 03 - 08, 2024, Minneapolis, United States</div>
+                </div>
+                <div class="experience-org">American Physical Society March Meeting is a scientific research conference that brings together more than 13,000 physicists</div>
+                <div class="experience-description">
+                Talk on "12.6 dB squeezed light at 1550 nm from a bow-tie cavity for long-term high duty cycle operation"
+		</div>
+            </div>
+
+	    <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Institute of Physics Singapore Meeting 2023</div>
+                    <div class="experience-date">Sep. 27 – 29, 2023, Singapore</div>
+                </div>
+                <div class="experience-org">Organized by the Institute of Physics Singapore, the meeting brings together active researchers in physical sciences across Singapore</div>
+                <div class="experience-description">
+            Talk on "12.6 dB squeezed light at 1550 nm from a bow-tie cavity for long-term high duty cycle operation"
+		</div>
+            </div>
+		 <div style="text-align: center; margin-top: 30px;">
+                <a href="Biveen_CV.pdf" class="publication-link" target="_blank">See more in my résumé →</a>
+            </div>
+
+        </div>
     </div>
 
-    <script>
+
+     <script>
         document.querySelectorAll('.navbar-nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault(); // Prevent default instant jump
@@ -992,7 +1036,6 @@
                 if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
                     this.dx = -this.dx;
                 }
-                // Reverse direction if hitting vertical boundaries
                 if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
                     this.dy = -this.dy;
                 }
