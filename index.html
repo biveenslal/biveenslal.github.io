@@ -92,6 +92,11 @@
             font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 0.12em;
             color: var(--cyan); font-size: 1rem; padding-left: 8px; white-space: nowrap;
             text-shadow: 0 0 16px rgba(34, 224, 224, 0.4);
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .nav-brand img {
+            width: 24px; height: 24px; display: block;
+            filter: drop-shadow(0 0 8px rgba(34, 224, 224, 0.5));
         }
         .navbar-nav { list-style: none; display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
         .nav-link {
@@ -363,7 +368,7 @@
     <div id="scroll-progress"></div>
 
     <nav class="navbar">
-        <span class="nav-brand">Biveen Shajilal, PhD</span>
+        <span class="nav-brand"><img src="icon.svg" alt="">Biveen Shajilal, PhD</span>
         <ul class="navbar-nav">
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#expertise" class="nav-link">Expertise</a></li>
@@ -387,13 +392,13 @@
             <p class="eyebrow center reveal is-visible">Hello, I'm</p>
             <h1 class="hero-name reveal is-visible">Biveen Shajilal</h1>
             <p class="hero-role reveal is-visible d1">Physicist specialising in Quantum Sensing and Metrology</p>
-            <p class="hero-affil reveal is-visible d1">Senior Scientist, Quantum Sensing — Magnetometry at <strong>Q-CTRL</strong>, Sydney, Australia</p>
+            <p class="hero-affil reveal is-visible d1">Senior Scientist in Quantum Sensing (Magnetometry) at <strong>Q-CTRL</strong>, Sydney, Australia</p>
             <div class="hero-badges reveal is-visible d2">
                 <span class="badge">Quantum Sensing and Metrology</span>
                 <span class="badge">Quantum Magnetometry</span>
                 <span class="badge">Quantum Communications</span>
                 <span class="badge">Quantum Information</span>
-                <span class="badge">Quantum Optics</span>   
+                <span class="badge">Quantum Optics</span>
             </div>
             <div class="hero-links reveal is-visible d3">
                 <a href="mailto:biveen.shajilal@gmail.com" class="btn btn-primary">📫 Email</a>
@@ -487,7 +492,7 @@
                         <span class="tl-date">May 2023 — Oct 2025</span>
                     </div>
                     <div class="tl-org">Independent Contractor — Quantum Technologies</div>
-                    <p class="tl-desc">Providing strategic consulting for quantum technology startups, including feasibility studies on quantum key distribution systems, protocol feasibility analysis, hardware design, noise budgeting, and policy standardization for quantum technologies.</p>
+                    <p class="tl-desc">Providing strategic consulting for quantum technology startups, including feasibility studies on quantum key distribution systems, protocol feasibility analysis, hardware design, noise budgeting, and policy standardisation for quantum technologies.</p>
                 </div>
             </div>
         </section>
@@ -540,7 +545,7 @@
                 <div class="card skill-category reveal d1">
                     <h4>Optical Systems</h4>
                     <div class="skill-list">
-                        <span class="skill-tag">Free Space and Fiber Optics</span>
+                        <span class="skill-tag">Free Space and Fibre Optics</span>
                         <span class="skill-tag">Nonlinear Optics</span>
                         <span class="skill-tag">Laser Systems (1550nm, 1064nm, 775nm, 532nm)</span>
                         <span class="skill-tag">Optical Instrumentation and Interferometry</span>
@@ -566,7 +571,7 @@
                         <span class="skill-tag">Mathematica</span>
                         <span class="skill-tag">LabView</span>
                         <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Numpy, Pandas, Seaborn, SciPy</span>
+                        <span class="skill-tag">NumPy, Pandas, Seaborn, SciPy</span>
                         <span class="skill-tag">Julia</span>
                         <span class="skill-tag">Autodesk Fusion and FreeCAD</span>
                         <span class="skill-tag">C, C++, SQL, HTML5</span>
@@ -672,7 +677,7 @@
                         <div class="tl-title">Institute of Physics Singapore Meeting 2023</div>
                         <span class="tl-date">Sep 27–29, 2023 · Singapore</span>
                     </div>
-                    <div class="tl-org">Organized by the Institute of Physics Singapore</div>
+                    <div class="tl-org">Organised by the Institute of Physics Singapore</div>
                     <p class="tl-desc"><em>Talk:</em> "12.6 dB squeezed light at 1550 nm from a bow-tie cavity for long-term high duty cycle operation"</p>
                 </div>
             </div>
@@ -685,14 +690,16 @@
     <!-- ===== Footer ===== -->
     <footer class="footer">
         <div class="hero-name">Let's connect</div>
-        <p class="about-text">Interested in quantum sensing, quantum optics, or collaboration opportunities? I'd love to hear from you.</p>
+        <p class="about-text">Interested in quantum sensing, quantum optics, or collaboration? I'd love to hear from you.</p>
         <div class="footer-links">
             <a href="mailto:biveen.shajilal@gmail.com" class="btn btn-primary">📫 Email</a>
             <a href="https://scholar.google.com/citations?user=_PFmphAAAAAJ&hl=en" class="btn" target="_blank">🎓 Scholar</a>
             <a href="https://www.linkedin.com/in/biveen-shajilal-3a89a4a4" class="btn" target="_blank">🔗 LinkedIn</a>
             <a href="https://x.com/biveenslal" class="btn" target="_blank">🐦 X</a>
         </div>
-        <p class="footer-copy">© <span id="year"></span> Biveen Shajilal · "Physics is a servitude to measurement" ·</p>
+        <p class="footer-copy">- - - -</p>
+        <p class="footer-copy">"Physics is a servitude to measurement"</p>
+        <p class="footer-copy">© <span id="year"></span> Biveen Shajilal</p>
     </footer>
 
     <script>
