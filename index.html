@@ -3,384 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="icon.svg" type="image/svg">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="icon.png" type="image/png">
     <title>Biveen Shajilal - Quantum Physicist</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
-
-        :root {
-            --bg-0: #05060a;
-            --bg-1: #0a0c12;
-            --bg-2: #0e1119;
-            --cyan: #22e0e0;
-            --cyan-soft: #8af4f4;
-            --purple: #9d6bff;
-            --text: #e6edf3;
-            --text-dim: #9aa7b4;
-            --text-faint: #66727f;
-            --border: rgba(34, 224, 224, 0.14);
-            --border-strong: rgba(34, 224, 224, 0.32);
-            --card: rgba(255, 255, 255, 0.025);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Parkinsans', sans-serif;
-            background: var(--bg-0);
-            color: var(--text);
-            line-height: 1.65;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Ambient animated background */
-        .bg-aurora {
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            background:
-                radial-gradient(45rem 35rem at 12% 8%, rgba(34, 224, 224, 0.10), transparent 60%),
-                radial-gradient(40rem 35rem at 88% 18%, rgba(157, 107, 255, 0.10), transparent 60%),
-                radial-gradient(50rem 40rem at 50% 100%, rgba(34, 224, 224, 0.06), transparent 60%),
-                linear-gradient(180deg, var(--bg-0), var(--bg-1) 40%, var(--bg-0));
-        }
-        .bg-aurora::after {
-            content: '';
-            position: absolute;
-            inset: -50%;
-            background:
-                radial-gradient(circle at 30% 30%, rgba(34,224,224,0.05), transparent 8%),
-                radial-gradient(circle at 70% 60%, rgba(157,107,255,0.05), transparent 8%);
-            background-size: 14px 14px, 22px 22px;
-            opacity: 0.5;
-            animation: drift 40s linear infinite;
-        }
-        @keyframes drift {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-60px, -60px); }
-        }
-
-        .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-
-        /* Scroll progress bar */
-        #scroll-progress {
-            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
-            background: linear-gradient(90deg, var(--cyan), var(--purple));
-            z-index: 2000; box-shadow: 0 0 12px rgba(34, 224, 224, 0.6);
-            transition: width 0.1s linear;
-        }
-
-        /* ---------- Navbar ---------- */
-        .navbar {
-            position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
-            width: calc(100% - 36px); max-width: 1180px;
-            background: rgba(8, 10, 16, 0.6);
-            backdrop-filter: blur(18px) saturate(140%);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 12px 14px;
-            z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .nav-brand {
-            font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 0.12em;
-            color: var(--cyan); font-size: 1rem; padding-left: 8px; white-space: nowrap;
-            text-shadow: 0 0 16px rgba(34, 224, 224, 0.4);
-            display: inline-flex; align-items: center; gap: 10px;
-        }
-        .nav-brand img {
-            width: 24px; height: 24px; display: block;
-            filter: drop-shadow(0 0 8px rgba(34, 224, 224, 0.5));
-        }
-        .navbar-nav { list-style: none; display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-        .nav-link {
-            color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 500;
-            padding: 7px 12px; border-radius: 10px; position: relative; transition: color 0.25s ease, background 0.25s ease;
-        }
-        .nav-link::after {
-            content: ''; position: absolute; left: 12px; right: 12px; bottom: 4px; height: 2px;
-            background: linear-gradient(90deg, var(--cyan), var(--purple));
-            transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; border-radius: 2px;
-        }
-        .nav-link:hover, .nav-link.active { color: var(--text); background: rgba(34, 224, 224, 0.08); }
-        .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
-
-        /* ---------- Hero ---------- */
-        .hero {
-            position: relative; min-height: 100vh;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 120px 24px 110px; overflow: hidden;
-        }
-        .hero-inner { position: relative; z-index: 1; max-width: 880px; }
-        .hero-inner > *:not(.atom) { position: relative; z-index: 1; }
-
-        /* Rubidium atom: profile picture as nucleus with electron shells */
-        .atom {
-            position: relative; width: 169px; height: 169px; margin: 0 auto 20px;
-            display: flex; align-items: center; justify-content: center; z-index: 0;
-            animation: floaty 6s ease-in-out infinite;
-        }
-        .atom .shells { position: absolute; top: 50%; left: 50%; width: 0; height: 0; z-index: 0; pointer-events: none; opacity: 0.15; }
-        .atom .shell {
-            position: absolute; top: 50%; left: 50%; border-radius: 50%;
-            border: 1px solid rgba(34, 224, 224, 0.16);
-            transform: translate(-50%, -50%);
-            animation: orbitSpin var(--dur) linear infinite;
-        }
-        .atom .shell.rev { animation-direction: reverse; border-color: rgba(157, 107, 255, 0.18); }
-        .atom .electron {
-            position: absolute; top: 50%; left: 50%; width: 7px; height: 7px; border-radius: 50%;
-            transform: translate(-50%, -50%) rotate(var(--a)) translateX(var(--r));
-            background: radial-gradient(circle at 35% 35%, #d6ffff, var(--cyan));
-            box-shadow: 0 0 8px 1.5px rgba(34, 224, 224, 0.7);
-        }
-        .atom .shell.rev .electron {
-            background: radial-gradient(circle at 35% 35%, #f0e7ff, var(--purple));
-            box-shadow: 0 0 8px 1.5px rgba(157, 107, 255, 0.7);
-        }
-        .atom .electron.valence {
-            width: 10px; height: 10px;
-            background: radial-gradient(circle at 35% 35%, #fff6cf, #ffce4d);
-            box-shadow: 0 0 12px 2.5px rgba(255, 200, 80, 0.85);
-        }
-        @keyframes orbitSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
-
-        .hero-avatar {
-            width: 169px; height: 169px; border-radius: 50%; margin: 0 auto;
-            border: 2px solid var(--border-strong); overflow: hidden; position: relative; z-index: 1;
-            box-shadow: 0 0 0 6px rgba(34, 224, 224, 0.05), 0 0 40px rgba(34, 224, 224, 0.25);
-        }
-        .hero-avatar::before {
-            content: ''; position: absolute; inset: -2px; border-radius: 50%; padding: 2px;
-            background: conic-gradient(from 0deg, var(--cyan), var(--purple), var(--cyan));
-            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude;
-            animation: spin 8s linear infinite;
-        }
-        .hero-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-        @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .eyebrow {
-            display: inline-flex; align-items: center; gap: 10px;
-            font-size: 0.78rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase;
-            color: var(--cyan-soft); margin-bottom: 18px;
-        }
-        .eyebrow::before, .eyebrow.center::after {
-            content: ''; width: 28px; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan));
-        }
-        .eyebrow.center::after { background: linear-gradient(90deg, var(--cyan), transparent); }
-
-        .hero-name {
-            font-family: 'Cinzel', serif; font-weight: 600;
-            font-size: clamp(2.08rem, 5.6vw, 4rem); line-height: 1.05; letter-spacing: 0.04em;
-            background: linear-gradient(120deg, #ffffff 10%, var(--cyan) 50%, var(--purple) 90%);
-            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 30px rgba(34, 224, 224, 0.25));
-            margin-bottom: 18px;
-        }
-        .hero-role { font-size: clamp(1.05rem, 2.4vw, 1.35rem); color: var(--text); font-weight: 500; margin-bottom: 8px; }
-        .hero-affil { font-size: 0.98rem; color: var(--text-dim); margin-bottom: 28px; }
-        .hero-affil strong { color: var(--cyan-soft); font-weight: 600; }
-
-        .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 32px; }
-        .badge {
-            font-size: 0.82rem; font-weight: 500; padding: 7px 16px; border-radius: 999px;
-            color: var(--cyan-soft); background: rgba(34, 224, 224, 0.07);
-            border: 1px solid var(--border); transition: all 0.3s ease;
-        }
-        .badge:hover { background: rgba(157, 107, 255, 0.12); border-color: rgba(157,107,255,0.4); color: #fff; transform: translateY(-2px); }
-
-        .hero-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem;
-            padding: 11px 20px; border-radius: 12px; transition: all 0.3s ease; border: 1px solid var(--border);
-            color: var(--cyan-soft); background: rgba(255,255,255,0.02);
-        }
-        .btn:hover { transform: translateY(-3px); color: #fff; border-color: var(--border-strong);
-            box-shadow: 0 10px 26px rgba(34, 224, 224, 0.2); background: rgba(34, 224, 224, 0.08); }
-        .btn-primary { background: linear-gradient(120deg, rgba(34,224,224,0.18), rgba(157,107,255,0.18)); border-color: var(--border-strong); color: #fff; }
-
-        .scroll-cue {
-            position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 1;
-            display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-faint);
-            font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
-        }
-        .scroll-mouse { width: 22px; height: 36px; border: 2px solid var(--text-faint); border-radius: 12px; position: relative; }
-        .scroll-mouse::before {
-            content: ''; position: absolute; top: 7px; left: 50%; transform: translateX(-50%);
-            width: 4px; height: 7px; border-radius: 2px; background: var(--cyan); animation: scrollDot 1.6s ease-in-out infinite;
-        }
-        @keyframes scrollDot { 0% { opacity: 0; transform: translate(-50%, 0); } 40% { opacity: 1; } 80%, 100% { opacity: 0; transform: translate(-50%, 12px); } }
-
-        /* ---------- Stats strip ---------- */
-        .stats-strip {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
-            margin: 40px auto 0; max-width: 1000px; position: relative; z-index: 2;
-            padding: 0 24px;
-        }
-        .stat-card {
-            text-align: center; padding: 26px 16px; border-radius: 18px;
-            background: var(--card); border: 1px solid var(--border);
-            backdrop-filter: blur(14px); transition: all 0.35s ease;
-        }
-        .stat-card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: 0 16px 40px rgba(34,224,224,0.12); }
-        .stat-num {
-            font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 700; line-height: 1;
-            background: linear-gradient(120deg, var(--cyan), var(--purple));
-            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .stat-label { font-size: 0.78rem; color: var(--text-dim); margin-top: 8px; letter-spacing: 0.04em; }
-
-        /* ---------- Sections ---------- */
-        .section { padding: 80px 0 20px; }
-        .section-head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
-        .section-title {
-            font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600;
-            color: var(--text); letter-spacing: 0.03em;
-        }
-        .section-title span {
-            background: linear-gradient(120deg, var(--cyan), var(--purple));
-            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .section-sub { color: var(--text-dim); margin-top: 12px; font-size: 1rem; }
-
-        .about-text { color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; max-width: 820px; margin: 0 auto 18px; text-align: center; }
-        .about-text strong { color: var(--cyan-soft); font-weight: 600; }
-
-        /* Cards generic */
-        .card {
-            position: relative; background: var(--card); border: 1px solid var(--border);
-            border-radius: 18px; padding: 28px; overflow: hidden; transition: all 0.35s ease;
-        }
-        .card::before {
-            content: ''; position: absolute; inset: 0; padding: 1px; border-radius: 18px; pointer-events: none;
-            background: linear-gradient(130deg, rgba(34,224,224,0.4), transparent 40%, rgba(157,107,255,0.4));
-            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.35s ease;
-        }
-        .card:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(0,0,0,0.4); }
-        .card:hover::before { opacity: 1; }
-
-        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
-        .expertise-item .ico {
-            width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; margin-bottom: 16px; background: rgba(34,224,224,0.08); border: 1px solid var(--border);
-        }
-        .expertise-item h3 { color: var(--text); font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
-        .expertise-item p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; }
-
-        /* Timeline */
-        .timeline { position: relative; max-width: 860px; margin: 0 auto; padding-left: 34px; }
-        .timeline::before {
-            content: ''; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 2px;
-            background: linear-gradient(180deg, var(--cyan), rgba(157,107,255,0.4), transparent);
-        }
-        .tl-item { position: relative; margin-bottom: 26px; }
-        .tl-item::before {
-            content: ''; position: absolute; left: -33px; top: 26px; width: 14px; height: 14px; border-radius: 50%;
-            background: var(--bg-0); border: 2px solid var(--cyan); box-shadow: 0 0 0 4px rgba(34,224,224,0.12);
-        }
-        .tl-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
-        .tl-title { font-size: 1.18rem; font-weight: 600; color: var(--text); }
-        .tl-date {
-            font-size: 0.78rem; color: var(--cyan-soft); font-weight: 600; white-space: nowrap;
-            background: rgba(34,224,224,0.08); border: 1px solid var(--border); padding: 4px 12px; border-radius: 999px; height: fit-content;
-        }
-        .tl-org { color: var(--cyan-soft); font-weight: 500; font-size: 0.98rem; margin-bottom: 8px; }
-        .tl-desc { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; }
-
-        /* Skills */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
-        .skill-category h4 { color: var(--cyan); font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.02em; }
-        .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
-        .skill-tag {
-            background: rgba(34,224,224,0.07); color: var(--text); padding: 6px 13px; border-radius: 16px;
-            font-size: 0.8rem; font-weight: 500; border: 1px solid var(--border); transition: all 0.25s ease;
-        }
-        .skill-tag:hover { background: rgba(157,107,255,0.16); border-color: rgba(157,107,255,0.45); transform: translateY(-2px); color: #fff; }
-
-        /* Publications */
-        .pub-grid { display: grid; gap: 18px; }
-        .pub-item { padding: 24px 26px; }
-        .pub-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 8px; }
-        .pub-title { font-size: 1.06rem; font-weight: 600; line-height: 1.5; color: var(--text); }
-        .pub-link-btn {
-            flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-            font-size: 0.78rem; font-weight: 600; color: var(--cyan-soft); white-space: nowrap;
-            padding: 6px 13px; border-radius: 999px; border: 1px solid var(--border);
-            background: rgba(34,224,224,0.07); transition: all 0.25s ease;
-        }
-        .pub-link-btn:hover { color: #fff; background: rgba(34,224,224,0.16); border-color: var(--border-strong); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(34,224,224,0.18); }
-        .pub-authors { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 6px; }
-        .pub-venue { color: var(--text-faint); font-size: 0.85rem; font-style: italic; }
-
-        .center-link { text-align: center; margin-top: 36px; }
-        .text-link {
-            color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 0.95rem;
-            border-bottom: 1px solid rgba(34,224,224,0.3); padding-bottom: 2px; transition: all 0.25s ease;
-        }
-        .text-link:hover { color: #fff; border-color: #fff; letter-spacing: 0.03em; }
-
-        /* Footer */
-        .footer { text-align: center; padding: 70px 24px 50px; margin-top: 60px; border-top: 1px solid var(--border); }
-        .footer .hero-name { font-size: clamp(1.2rem, 4vw, 2.4rem); margin-bottom: 16px; }
-        .footer-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 22px 0; }
-        .footer-copy { color: var(--text-faint); font-size: 0.82rem; margin-top: 18px; }
-
-        /* Reveal-on-scroll */
-        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1); }
-        .reveal.is-visible { opacity: 1; transform: none; }
-        .reveal.d1 { transition-delay: 0.08s; }
-        .reveal.d2 { transition-delay: 0.16s; }
-        .reveal.d3 { transition-delay: 0.24s; }
-        .reveal.d4 { transition-delay: 0.32s; }
-        @media (prefers-reduced-motion: reduce) {
-            .reveal { opacity: 1; transform: none; transition: none; }
-            .atom, .shell, .hero-avatar::before, .bg-aurora::after, .scroll-mouse::before { animation: none; }
-        }
-
-        /* Responsive */
-        @media (max-width: 820px) {
-            .stats-strip { grid-template-columns: repeat(2, 1fr); margin-top: 0; padding-top: 24px; }
-            .nav-brand { display: none; }
-            .navbar { justify-content: center; }
-            .navbar-nav { justify-content: center; }
-        }
-        @media (max-width: 560px) {
-            .nav-link { font-size: 0.78rem; padding: 6px 9px; }
-            .section { padding: 60px 0 10px; }
-            .card { padding: 22px; }
-            .tl-date { font-size: 0.72rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="bg-aurora"></div>
     <div id="scroll-progress"></div>
 
+    <!-- Navigation -->
     <nav class="navbar">
-        <span class="nav-brand"><img src="icon.svg" alt="">Biveen Shajilal, PhD</span>
+        <a href="index.html" class="nav-brand">
+            <img src="icon.svg" alt="Dirac constant h-bar">
+            <span>Biveen Shajilal, PhD</span>
+        </a>
         <ul class="navbar-nav">
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#expertise" class="nav-link">Expertise</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#education" class="nav-link">Education</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#publications" class="nav-link">Publications</a></li>
-            <li><a href="#talks" class="nav-link">Talks</a></li>
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="expertise.html" class="nav-link">Expertise</a></li>
+            <li><a href="experience.html" class="nav-link">Experience</a></li>
+            <li><a href="education.html" class="nav-link">Education</a></li>
+            <li><a href="skills.html" class="nav-link">Skills</a></li>
+            <li><a href="publications.html" class="nav-link">Publications</a></li>
+            <li><a href="talks.html" class="nav-link">Talks</a></li>
         </ul>
     </nav>
 
-    <!-- ===== Hero ===== -->
+    <!-- Hero -->
     <header class="hero" id="top">
         <div class="hero-inner">
             <div class="atom reveal is-visible">
@@ -414,280 +64,45 @@
         </div>
     </header>
 
-    <!-- ===== Stats ===== -->
+    <!-- Stats Strip -->
     <div class="stats-strip">
-        <div class="stat-card reveal d1"><div class="stat-num" data-target="10" data-suffix="+">0</div><div class="stat-label">Years in Quantum Research</div></div>
-        <div class="stat-card reveal"><div class="stat-num" data-target="10" data-suffix="+">0</div><div class="stat-label">Publications</div></div>
-        <div class="stat-card reveal d3"><div class="stat-num" data-target="200" data-suffix="+">0</div><div class="stat-label">Citations</div></div>
-        <div class="stat-card reveal d2"><div class="stat-num" data-target="8" data-decimals="1">0</div><div class="stat-label">h-index</div></div>
+        <div class="stat-card reveal d1">
+            <div class="stat-num" data-target="10" data-suffix="+">0</div>
+            <div class="stat-label">Years in Quantum Research</div>
+        </div>
+        <div class="stat-card reveal">
+            <div class="stat-num" data-target="14" data-suffix="+">0</div>
+            <div class="stat-label">Publications</div>
+        </div>
+        <div class="stat-card reveal d3">
+            <div class="stat-num" data-target="200" data-suffix="+">0</div>
+            <div class="stat-label">Citations</div>
+        </div>
+        <div class="stat-card reveal d2">
+            <div class="stat-num" data-target="8" data-decimals="0">0</div>
+            <div class="stat-label">h-index</div>
+        </div>
     </div>
 
+    <!-- Main Content Summary -->
     <main class="container">
-        <!-- ===== About ===== -->
-        <section class="section" id="about">
+        <section class="section" id="overview">
             <div class="section-head reveal">
-                <p class="eyebrow center">About</p>
+                <p class="eyebrow center">Overview</p>
                 <h2 class="section-title">Bridging <span>quantum research</span> and real-world technology</h2>
+                <p class="section-subtitle">Exploring fundamental quantum resources and translating them into robust physical systems.</p>
             </div>
             <p class="about-text reveal d1">
                 I am a physicist specialising in <strong>quantum sensing (magnetometry)</strong> at Q-CTRL. With a PhD in Quantum Optics from the Australian National University, I bridge the gap between cutting-edge quantum research and practical technological applications.
             </p>
             <p class="about-text reveal d2">
-                Currently, I serve as a Senior Scientist at Q-CTRL's Sensing Research Team based in Sydney, Australia, where I work on groundbreaking technology for quantum sensing. My work spans from fundamental quantum theory to the development of next-generation quantum sensing systems.
+                Currently, I serve as a Senior Scientist at Q-CTRL's Sensing Research Team based in Sydney, Australia, where I work on groundbreaking technology for quantum sensing and navigation. My work spans from fundamental quantum theory to the development of deployable, next-generation quantum hardware.
             </p>
-        </section>
 
-        <!-- ===== Expertise ===== -->
-        <section class="section" id="expertise">
-            <div class="section-head reveal">
-                <p class="eyebrow center">Expertise</p>
-                <h2 class="section-title">Research <span>focus areas</span></h2>
-                <p class="section-sub">From fundamental theory to deployable quantum hardware.</p>
-            </div>
-            <div class="expertise-grid">
-                <div class="card expertise-item reveal">
-                    <div class="ico">🧭</div>
-                    <h3>Quantum Sensing</h3>
-                    <p>I develop ultra-precise measurement systems using quantum-enhanced techniques, including magnetometers and advanced quantum interferometers.</p>
-                </div>
-                <div class="card expertise-item reveal d1">
-                    <div class="ico">🔬</div>
-                    <h3>Quantum Optics</h3>
-                    <p>I specialise in advanced experimental quantum optics, squeezed light generation, and quantum state manipulation for precision measurements and quantum communication protocols.</p>
-                </div>
-                <div class="card expertise-item reveal d2">
-                    <div class="ico">🔗</div>
-                    <h3>Quantum Information</h3>
-                    <p>My work involves theoretical and experimental investigation of quantum entanglement, quantum communication resources, and quantum key distribution systems.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Experience ===== -->
-        <section class="section" id="experience">
-            <div class="section-head reveal">
-                <p class="eyebrow center">Experience</p>
-                <h2 class="section-title">Professional <span>journey</span></h2>
-            </div>
-            <div class="timeline">
-                <div class="card tl-item reveal">
-                    <div class="tl-head">
-                        <div class="tl-title">Senior Scientist in Quantum Sensing (Magnetometry)</div>
-                        <span class="tl-date">Oct 2025 — Present</span>
-                    </div>
-                    <div class="tl-org">Q-CTRL, Sydney, Australia</div>
-                    <p class="tl-desc">Research and development in quantum sensing with focus on magnetometry and navigation. Additionally, closely working with optical, software, embedded systems and mechanical teams.</p>
-                </div>
-                <div class="card tl-item reveal d1">
-                    <div class="tl-head">
-                        <div class="tl-title">Scientist in Quantum Physics</div>
-                        <span class="tl-date">May 2023 — Sep 2025</span>
-                    </div>
-                    <div class="tl-org">A*STAR Quantum Innovation Centre (Q.InC), Singapore</div>
-                    <p class="tl-desc">Leading research in quantum optics and quantum information with focus on squeezed light sources for quantum metrology. Managing infrastructure development for quantum metrology lab, supervising PhD candidates and research engineers, and engaging with external stakeholders on grant proposals and technology translation.</p>
-                </div>
-                <div class="card tl-item reveal d2">
-                    <div class="tl-head">
-                        <div class="tl-title">Private Consultant</div>
-                        <span class="tl-date">May 2023 — Oct 2025</span>
-                    </div>
-                    <div class="tl-org">Independent Contractor — Quantum Technologies</div>
-                    <p class="tl-desc">Providing strategic consulting for quantum technology startups, including feasibility studies on quantum key distribution systems, protocol feasibility analysis, hardware design, noise budgeting, and policy standardisation for quantum technologies.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Education ===== -->
-        <section class="section" id="education">
-            <div class="section-head reveal">
-                <p class="eyebrow center">Education</p>
-                <h2 class="section-title">Academic <span>background</span></h2>
-            </div>
-            <div class="timeline">
-                <div class="card tl-item reveal">
-                    <div class="tl-head">
-                        <div class="tl-title">PhD in Quantum Optics and Quantum Information</div>
-                        <span class="tl-date">Nov 2018 — May 2023</span>
-                    </div>
-                    <div class="tl-org">Australian National University, Canberra, Australia</div>
-                    <p class="tl-desc">Thesis: "Experimental and theoretical investigation of quantum communication resources: A study on squeezing, entanglement and entropic accord"<br>Advisors: Dr. Jiri Janousek, Dr. Syed M Assad, Prof. Elanor Huntington, and Prof. Ping Koy Lam</p>
-                </div>
-                <div class="card tl-item reveal d1">
-                    <div class="tl-head">
-                        <div class="tl-title">M.Sc. in Photonics (Five Year Integrated Programme)</div>
-                        <span class="tl-date">Jul 2013 — Jun 2018</span>
-                    </div>
-                    <div class="tl-org">Cochin University of Science and Technology, Kerala, India</div>
-                    <p class="tl-desc">Specialisation in Nonlinear optical materials and Whispering gallery mode heralded single photon sources under Prof. Frank Vollmer, University of Exeter, United Kingdom.<br>Received Prof. Leggett Award (Five Year Integrated Programme topper) — CGPA: 9.33/10</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Skills ===== -->
-        <section class="section" id="skills">
-            <div class="section-head reveal">
-                <p class="eyebrow center">Skills</p>
-                <h2 class="section-title">Skills & <span>technologies</span></h2>
-            </div>
-            <div class="skills-grid">
-                <div class="card skill-category reveal">
-                    <h4>Quantum Technologies</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Optically Pumped Magnetometers</span>
-                        <span class="skill-tag">Quantum Information Theory</span>
-                        <span class="skill-tag">Experimental Quantum Optics</span>
-                        <span class="skill-tag">Squeezed Light Sources</span>
-                        <span class="skill-tag">Quantum Metrology</span>
-                        <span class="skill-tag">Quantum Entanglement</span>
-                        <span class="skill-tag">Quantum Key Distribution Systems</span>
-                    </div>
-                </div>
-                <div class="card skill-category reveal d1">
-                    <h4>Optical Systems</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Free Space and Fibre Optics</span>
-                        <span class="skill-tag">Nonlinear Optics</span>
-                        <span class="skill-tag">Laser Systems (1550nm, 1064nm, 775nm, 532nm)</span>
-                        <span class="skill-tag">Optical Instrumentation and Interferometry</span>
-                        <span class="skill-tag">Homodyne and Heterodyne Detection</span>
-                        <span class="skill-tag">Second Harmonic Generation and Optical Parametric Amplifiers</span>
-                    </div>
-                </div>
-                <div class="card skill-category reveal d2">
-                    <h4>Electronics & Control</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">RF Electronics</span>
-                        <span class="skill-tag">FPGA-based Automation</span>
-                        <span class="skill-tag">Analog Circuits</span>
-                        <span class="skill-tag">Balanced Detector Design</span>
-                        <span class="skill-tag">Analog and Digital Feedback Control</span>
-                        <span class="skill-tag">Noise Budgeting and Phase Noise Measurements</span>
-                    </div>
-                </div>
-                <div class="card skill-category reveal d3">
-                    <h4>Software & Programming</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">MATLAB</span>
-                        <span class="skill-tag">Mathematica</span>
-                        <span class="skill-tag">LabView</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">NumPy, Pandas, Seaborn, SciPy</span>
-                        <span class="skill-tag">Julia</span>
-                        <span class="skill-tag">Autodesk Fusion and FreeCAD</span>
-                        <span class="skill-tag">C, C++, SQL, HTML5</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Publications ===== -->
-        <section class="section" id="publications">
-            <div class="section-head reveal">
-                <p class="eyebrow center">Publications</p>
-                <h2 class="section-title">Selected <span>publications</span></h2>
-            </div>
-            <div class="pub-grid">
-                <div class="card pub-item reveal">
-                    <div class="pub-title-row">
-                        <div class="pub-title">12.6 dB squeezed light at 1550 nm from a bow-tie cavity for long-term high duty cycle operation</div>
-                        <a class="pub-link-btn" href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-30-21-37213&id=507125" target="_blank">🔗 View</a>
-                    </div>
-                    <div class="pub-authors">B. Shajilal, A. Tranter, O. Thearle, Y. Lu, E. Huntington, S. M. Assad, P. K. Lam, and J. Janousek</div>
-                    <div class="pub-venue">Optics Express. 2022 Oct 10; 30(21): 37213-23</div>
-                </div>
-                <div class="card pub-item reveal d1">
-                    <div class="pub-title-row">
-                        <div class="pub-title">Improving Gaussian channel simulation using nonunity-gain heralded quantum teleportation</div>
-                        <a class="pub-link-btn" href="https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.22.054070" target="_blank">🔗 View</a>
-                    </div>
-                    <div class="pub-authors">B. Shajilal, L. O. Conlon, A. Walsh, S. Tserkis, J. Zhao, J. Janousek, P. K. Lam, S. M. Assad</div>
-                    <div class="pub-venue">Physical Review Applied 22.5 (2024): 054070</div>
-                </div>
-                <div class="card pub-item reveal d2">
-                    <div class="pub-title-row">
-                        <div class="pub-title">Verifying the security of a continuous variable quantum communication protocol via quantum metrology</div>
-                        <a class="pub-link-btn" href="https://www.nature.com/articles/s41534-024-00834-9" target="_blank">🔗 View</a>
-                    </div>
-                    <div class="pub-authors">B. Shajilal, L. O. Conlon, A. Walsh, J. Zhao, J. Janousek, P. K. Lam, S. M. Assad</div>
-                    <div class="pub-venue">npj Quantum Information. 2024 Apr 4; 10(1): 35</div>
-                </div>
-                <div class="card pub-item reveal">
-                    <div class="pub-title-row">
-                        <div class="pub-title">Non-Gaussian Mechanical Motion via Single and Multiphonon Subtraction from a Thermal State</div>
-                        <a class="pub-link-btn" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.127.243601" target="_blank">🔗 View</a>
-                    </div>
-                    <div class="pub-authors">G. Enzian, L. Freisem, J. J. Price, A.O. Svela, J. Clarke, B. Shajilal, J. Janousek, B. C. Buchler, P. K. Lam, M. R. Vanner</div>
-                    <div class="pub-venue">Physical Review Letters 127, 243601 (2021)</div>
-                </div>
-                <div class="card pub-item reveal d1">
-                    <div class="pub-title-row">
-                        <div class="pub-title">Satellite-to-Ground Continuous Variable Quantum Key Distribution: The Gaussian and Discrete Modulated Protocols in Low Earth Orbit</div>
-                        <a class="pub-link-btn" href="https://ieeexplore.ieee.org/document/10415457" target="_blank">🔗 View</a>
-                    </div>
-                    <div class="pub-authors">M. Sayat, B. Shajilal, S. P. Kish, S. M. Assad, T. Symul, P. K. Lam, N. Rattenbury, J. Cater</div>
-                    <div class="pub-venue">IEEE Transactions on Communications, doi: 10.1109/TCOMM.2024.3359295</div>
-                </div>
-                <div class="card pub-item reveal d2">
-                    <div class="pub-title-row">
-                        <div class="pub-title">Enhancing quantum teleportation efficacy with noiseless linear amplification</div>
-                        <a class="pub-link-btn" href="https://www.nature.com/articles/s41467-023-40438-z" target="_blank">🔗 View</a>
-                    </div>
-                    <div class="pub-authors">J. Zhao, H. Jeng, L. O. Conlon, S. Tserkis, B. Shajilal, K. Liu, T. C. Ralph, S. M. Assad, P. K. Lam</div>
-                    <div class="pub-venue">Nature Communications. 2023 Aug 7; 14(1): 4745</div>
-                </div>
-                <div class="card pub-item reveal d3">
-                    <div class="pub-title-row">
-                        <div class="pub-title">Surpassing the repeaterless bound with a photon-number encoded measurement-device-independent quantum key distribution protocol</div>
-                        <a class="pub-link-btn" href="https://www.nature.com/articles/s41534-023-00698-5" target="_blank">🔗 View</a>
-                    </div>
-                    <div class="pub-authors">O. Erkilic, L. O. Conlon, B. Shajilal, S. P. Kish, S. Tserkis, Y.S. Kim, P.K. Lam, S. M. Assad</div>
-                    <div class="pub-venue">npj Quantum Information, 2023 Mar 28; 9(1): 29</div>
-                </div>
-            </div>
-            <div class="center-link reveal">
-                <a href="https://scholar.google.com/citations?user=_PFmphAAAAAJ&hl=en" class="text-link" target="_blank">View all publications on Google Scholar →</a>
-            </div>
-        </section>
-
-        <!-- ===== Talks ===== -->
-        <section class="section" id="talks">
-            <div class="section-head reveal">
-                <p class="eyebrow center">Talks</p>
-                <h2 class="section-title">Recent talks & <span>presentations</span></h2>
-            </div>
-            <div class="timeline">
-                <div class="card tl-item reveal">
-                    <div class="tl-head">
-                        <div class="tl-title">International Network in Space Quantum Technologies Workshop 2024</div>
-                        <span class="tl-date">Mar 20–22, 2024 · Ahmedabad</span>
-                    </div>
-                    <div class="tl-org">Led by University of Strathclyde, funded by EPSRC and UKRI</div>
-                    <p class="tl-desc"><em>Invited talk:</em> "Continuous variable quantum communications: Resources, Gaussian Channel Simulation and Verification through Quantum Metrology"</p>
-                </div>
-                <div class="card tl-item reveal d1">
-                    <div class="tl-head">
-                        <div class="tl-title">American Physical Society Annual March Meeting 2024</div>
-                        <span class="tl-date">Mar 3–8, 2024 · Minneapolis</span>
-                    </div>
-                    <div class="tl-org">Scientific conference bringing together 13,000+ physicists</div>
-                    <p class="tl-desc"><em>Talk:</em> "12.6 dB squeezed light at 1550 nm from a bow-tie cavity for long-term high duty cycle operation"</p>
-                </div>
-                <div class="card tl-item reveal d2">
-                    <div class="tl-head">
-                        <div class="tl-title">Institute of Physics Singapore Meeting 2023</div>
-                        <span class="tl-date">Sep 27–29, 2023 · Singapore</span>
-                    </div>
-                    <div class="tl-org">Organised by the Institute of Physics Singapore</div>
-                    <p class="tl-desc"><em>Talk:</em> "12.6 dB squeezed light at 1550 nm from a bow-tie cavity for long-term high duty cycle operation"</p>
-                </div>
-            </div>
-            <div class="center-link reveal">
-                <a href="Biveen_CV.pdf" class="text-link" target="_blank">See more in my résumé →</a>
-            </div>
         </section>
     </main>
 
-    <!-- ===== Footer ===== -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="hero-name">Let's connect</div>
         <p class="about-text">Interested in quantum sensing, quantum optics, or collaboration? I'd love to hear from you.</p>
@@ -702,103 +117,6 @@
         <p class="footer-copy">© <span id="year"></span> Biveen Shajilal</p>
     </footer>
 
-    <script>
-        // ---- Smooth nav scroll with offset ----
-        document.querySelectorAll('.navbar-nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const top = target.getBoundingClientRect().top + window.scrollY - 90;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                }
-            });
-        });
-
-        // ---- Scroll progress + active nav ----
-        const links = [...document.querySelectorAll('.nav-link')];
-        const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
-        const progress = document.getElementById('scroll-progress');
-        function onScroll() {
-            const h = document.documentElement;
-            const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
-            progress.style.width = (scrolled * 100) + '%';
-            let current = sections[0];
-            for (const s of sections) { if (s.getBoundingClientRect().top <= 140) current = s; }
-            links.forEach(l => l.classList.toggle('active', current && l.getAttribute('href') === '#' + current.id));
-        }
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-
-        // ---- Reveal on scroll ----
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
-            });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => io.observe(el));
-
-        // ---- Animated counters ----
-        const counterIO = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                const el = entry.target;
-                const target = parseFloat(el.dataset.target);
-                const decimals = parseInt(el.dataset.decimals || '0', 10);
-                const suffix = el.dataset.suffix || '';
-                const dur = 1400; const start = performance.now();
-                function tick(now) {
-                    const p = Math.min((now - start) / dur, 1);
-                    const eased = 1 - Math.pow(1 - p, 3);
-                    el.textContent = (target * eased).toFixed(decimals) + (p === 1 ? suffix : '');
-                    if (p < 1) requestAnimationFrame(tick);
-                    else el.textContent = target.toFixed(decimals) + suffix;
-                }
-                requestAnimationFrame(tick);
-                counterIO.unobserve(el);
-            });
-        }, { threshold: 0.5 });
-        document.querySelectorAll('.stat-num').forEach(el => counterIO.observe(el));
-
-        // ---- Footer year ----
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // ---- Rubidium Bohr atom (Z=37, shells 2,8,18,8,1) ----
-        (function buildRubidium() {
-            const host = document.getElementById('atomShells');
-            if (!host) return;
-            const SHELLS = [2, 8, 18, 8, 1];
-            const durations = [14, 20, 28, 36, 48];
-            function build() {
-                host.innerHTML = '';
-                const vmax = Math.max(window.innerWidth, window.innerHeight);
-                const innerR = 90;                 // closest orbit hugs the photo
-                const outerR = vmax * 0.62 * 0.6;   // outermost orbit (scaled to 60%)
-                const n = SHELLS.length;
-                SHELLS.forEach((count, i) => {
-                    const r = innerR + (outerR - innerR) * (i / (n - 1));
-                    const shell = document.createElement('span');
-                    shell.className = 'shell' + (i % 2 ? ' rev' : '');
-                    shell.style.width = shell.style.height = (r * 2) + 'px';
-                    shell.style.setProperty('--dur', durations[i] + 's');
-                    const isValence = (i === n - 1);
-                    for (let k = 0; k < count; k++) {
-                        const e = document.createElement('i');
-                        e.className = 'electron' + (isValence ? ' valence' : '');
-                        e.style.setProperty('--a', (360 / count * k) + 'deg');
-                        e.style.setProperty('--r', r + 'px');
-                        shell.appendChild(e);
-                    }
-                    host.appendChild(shell);
-                });
-            }
-            build();
-            let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(build, 200);
-            });
-        })();
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
