@@ -3,11 +3,52 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    // ---- Hamburger Menu Toggle ----
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = navMenu.classList.toggle('is-active');
+            navToggle.classList.toggle('is-active', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('is-active');
+                navToggle.classList.remove('is-active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('is-active')) {
+                navMenu.classList.remove('is-active');
+                navToggle.classList.remove('is-active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.focus();
+            }
+        });
+
+        // Close menu when clicking any link
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('is-active');
+                navToggle.classList.remove('is-active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
     // ---- Active Navigation Link Highlight ----
     const currentPath = window.location.pathname;
     const page = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
     
-    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    document.querySelectorAll('.nav-menu .nav-link, .navbar-nav .nav-link').forEach(link => {
         const href = link.getAttribute('href');
         if (href === page || (page === '' && href === 'index.html') || (page === 'index.html' && href === 'index.html')) {
             link.classList.add('active');
