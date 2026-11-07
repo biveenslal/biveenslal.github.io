@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
         function buildAtom() {
             host.innerHTML = '';
             const vmax = Math.max(window.innerWidth, window.innerHeight);
-            const innerR = 90;                 // closest orbit hugs the photo
-            const outerR = vmax * 0.62 * 0.6;   // outermost orbit
+            const innerR = 118;                // closest orbit hugs the photo
+            const outerR = Math.min(vmax * 0.62 * 0.6, 400);   // outermost orbit
             const n = SHELLS.length;
             SHELLS.forEach((count, i) => {
                 const r = innerR + (outerR - innerR) * (i / (n - 1));
