@@ -552,7 +552,8 @@ main.container { flex: 1 0 auto; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 920px) {
-    .hero { padding-top: 120px; min-height: 0; }
+    .hero { padding: 120px 24px 116px; min-height: 0; }
+    .scroll-cue { bottom: 30px; }
     .hero-inner { display: block; }
     .hero-inner > .atom { margin: 0 0 40px; width: 168px; height: 168px; }
     .hero-avatar { width: 168px; height: 168px; margin: 0; }
@@ -560,7 +561,6 @@ main.container { flex: 1 0 auto; }
     .stats-strip { grid-template-columns: repeat(2, 1fr); }
     .stat-card:nth-child(3) { padding-left: 0; border-left: 0; }
     .stat-card:nth-child(n+3) { border-top: 0; }
-    .scroll-cue { display: none; }
 }
 @media (max-width: 580px) {
     .navbar { width: calc(100% - 24px); top: 12px; padding: 6px 8px 6px 12px; }
