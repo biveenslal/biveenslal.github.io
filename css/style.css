@@ -119,16 +119,21 @@ main.container { flex: 1 0 auto; }
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
 }
 .nav-brand {
-    font-family: var(--font-serif); font-weight: 500; font-size: 1.2rem;
-    letter-spacing: 0;
+    font-family: var(--font-serif); font-weight: 500; font-size: 1.2rem; line-height: 1;
+    letter-spacing: -0.005em;
     color: var(--text);
     white-space: nowrap;
     display: inline-flex; align-items: center; gap: 10px;
     text-decoration: none;
     transition: color 0.2s ease;
 }
+/* Trim the text box to cap-height and baseline so it centres on the logo by its letters, not its line box */
+.nav-brand span { display: block; }
+@supports (text-box: trim-both cap alphabetic) {
+    .nav-brand span { text-box: trim-both cap alphabetic; }
+}
 .nav-brand:hover { color: var(--cyan-soft); }
-.nav-brand img { width: 24px; height: 24px; display: block; border-radius: 4px; }
+.nav-brand img { width: 24px; height: 24px; display: block; flex: none; }
 
 /* ---------- Menu toggle ---------- */
 .nav-toggle {
